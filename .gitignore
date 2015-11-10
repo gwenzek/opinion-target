@@ -1,0 +1,11 @@
+*.pyc
+target/
+embeddings/
+baseline/
+evaluation/
+rnn-experiments/
+
+laptop-*
+restaurant-*
+*.iml
+
