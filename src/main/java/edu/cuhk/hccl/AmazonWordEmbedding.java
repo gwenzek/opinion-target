@@ -2,6 +2,7 @@ package edu.cuhk.hccl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
@@ -10,6 +11,7 @@ import org.apache.commons.io.LineIterator;
 public class AmazonWordEmbedding extends WordEmbedding {
 
 	private static final String SPACE = " ";
+	protected static HashMap<String, float[]> wordVecMap = new HashMap<String, float[]>();
 
 	public AmazonWordEmbedding(String modelPath) {
 		super(modelPath);
@@ -56,5 +58,12 @@ public class AmazonWordEmbedding extends WordEmbedding {
 			LineIterator.closeQuietly(it);
 		}
 
+	}
+
+	public float[] getWordEmbedding(String word) {
+
+		float[] wordVec = wordVecMap.get(word);
+
+		return wordVec;
 	}
 }

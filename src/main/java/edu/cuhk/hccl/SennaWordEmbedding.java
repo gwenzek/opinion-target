@@ -2,6 +2,7 @@ package edu.cuhk.hccl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -10,6 +11,7 @@ public class SennaWordEmbedding extends WordEmbedding {
 
 	public final static String WORDS_FILE = "words.lst";
 	public final static String EMBEDDING_FILE = "embeddings.txt";
+	protected static HashMap<String, float[]> wordVecMap = new HashMap<String, float[]>();
 
 	public SennaWordEmbedding(String modelPath) {
 		super(modelPath);
@@ -30,6 +32,12 @@ public class SennaWordEmbedding extends WordEmbedding {
 
 			wordVecMap.put(word, embedding);
 		}
+	}
 
+	public float[] getWordEmbedding(String word) {
+
+		float[] wordVec = wordVecMap.get(word);
+
+		return wordVec;
 	}
 }
